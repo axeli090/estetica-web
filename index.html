@@ -80,17 +80,12 @@
     }
 
     .reveal {
-      opacity: 1;
-      transform: none;
-    }
-
-    .js .reveal {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 700ms ease, transform 700ms ease;
     }
 
-    .js .reveal.show {
+    .reveal.show {
       opacity: 1;
       transform: translateY(0);
     }
@@ -165,7 +160,7 @@
       inset: 0;
       background:
         linear-gradient(100deg, rgba(22, 16, 16, 0.64), rgba(22, 16, 16, 0.25)),
-        url("assets/img/hero.svg") center/cover no-repeat;
+        url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
       z-index: -2;
       transform: scale(1.02);
     }
@@ -603,23 +598,23 @@
         </div>
         <div class="services-grid">
           <article class="service reveal">
-            <img src="assets/img/service-1.svg" alt="Limpieza facial profunda" />
+            <img src="https://images.unsplash.com/photo-1470259078422-826894b933aa?auto=format&fit=crop&w=700&q=80" alt="Limpieza facial profunda" />
             <div class="service-content"><h3>Limpieza facial profunda</h3><p>Renueva tu piel con un protocolo de limpieza profesional.</p></div>
           </article>
           <article class="service reveal">
-            <img src="assets/img/service-2.svg" alt="Diseño y perfilado de cejas" />
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=700&q=80" alt="Diseño y perfilado de cejas" />
             <div class="service-content"><h3>Diseño y perfilado de cejas</h3><p>Definición de cejas según tus facciones y estilo.</p></div>
           </article>
           <article class="service reveal">
-            <img src="assets/img/service-3.svg" alt="Lifting y tinte de pestañas" />
+            <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=700&q=80" alt="Lifting y tinte de pestañas" />
             <div class="service-content"><h3>Lifting y tinte de pestañas</h3><p>Mirada más expresiva y natural sin extensiones.</p></div>
           </article>
           <article class="service reveal">
-            <img src="assets/img/service-4.svg" alt="Maquillaje social y de evento" />
+            <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=700&q=80" alt="Maquillaje social y de evento" />
             <div class="service-content"><h3>Maquillaje social y de evento</h3><p>Look elegante para bodas, fiestas y celebraciones.</p></div>
           </article>
           <article class="service reveal">
-            <img src="assets/img/service-5.svg" alt="Manicure y gel semipermanente" />
+            <img src="https://images.unsplash.com/photo-1609234656388-0ff363383899?auto=format&fit=crop&w=700&q=80" alt="Manicure y gel semipermanente" />
             <div class="service-content"><h3>Manicure y gel semipermanente</h3><p>Manos impecables con acabados duraderos y elegantes.</p></div>
           </article>
         </div>
@@ -633,12 +628,12 @@
           <h2 class="title">Nuestros trabajos</h2>
         </div>
         <div class="gallery-grid">
-          <img class="reveal" src="gallery-1.svg" alt="Trabajo de estética 1" />
-          <img class="reveal" src="gallery-2.svg" alt="Trabajo de estética 2" />
-          <img class="reveal" src="gallery-3.svg" alt="Trabajo de estética 3" />
-          <img class="reveal" src="assets/img/gallery-4.svg" alt="Trabajo de estética 4" />
-          <img class="reveal" src="assets/img/gallery-5.svg" alt="Trabajo de estética 5" />
-          <img class="reveal" src="assets/img/gallery-6.svg" alt="Trabajo de estética 6" />
+          <img class="reveal" src="https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=800&q=80" alt="Trabajo de estética 1" />
+          <img class="reveal" src="https://images.unsplash.com/photo-1498842812179-c81beecf902c?auto=format&fit=crop&w=800&q=80" alt="Trabajo de estética 2" />
+          <img class="reveal" src="https://images.unsplash.com/photo-1523264766116-1f4a13eb3f9a?auto=format&fit=crop&w=800&q=80" alt="Trabajo de estética 3" />
+          <img class="reveal" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Trabajo de estética 4" />
+          <img class="reveal" src="https://images.unsplash.com/photo-1594149929911-78975a43d4f5?auto=format&fit=crop&w=800&q=80" alt="Trabajo de estética 5" />
+          <img class="reveal" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80" alt="Trabajo de estética 6" />
         </div>
       </div>
     </section>
@@ -736,8 +731,6 @@
   </footer>
 
   <script>
-    document.documentElement.classList.add("js");
-
     // Menu movil
     const menuToggle = document.getElementById("menuToggle");
     const menu = document.getElementById("menu");
@@ -757,25 +750,21 @@
 
     // Animaciones suaves al hacer scroll con IntersectionObserver
     const revealElements = document.querySelectorAll(".reveal");
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("show");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.2
-        }
-      );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2
+      }
+    );
 
-      revealElements.forEach((element) => observer.observe(element));
-    } else {
-      revealElements.forEach((element) => element.classList.add("show"));
-    }
+    revealElements.forEach((element) => observer.observe(element));
 
     // Enviar formulario a WhatsApp con mensaje prellenado
     const contactForm = document.getElementById("contactForm");

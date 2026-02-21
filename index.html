@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumina Estética Studio | Belleza Integral</title>
+  <meta name="description" content="Servicios de estética profesional: faciales, cejas, pestañas, maquillaje y cuidado personal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #fffaf7;
+      --paper: #ffffff;
+      --pink: #f4dfe4;
+      --beige: #f6e9dd;
+      --gold: #b08a4a;
+      --ink: #1f1b1b;
+      --muted: #6f6667;
+      --shadow: 0 14px 34px rgba(31, 27, 27, 0.12);
+      --radius: 18px;
+      --transition: 300ms cubic-bezier(.2, .65, .2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, #ffeceb 0%, transparent 35%),
+        radial-gradient(circle at 90% 2%, #fff1de 0%, transparent 28%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
+
+    .title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .js .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Header / Navegacion */
+    .header {
+      position: sticky;
+      top: 12px;
+      z-index: 100;
+      width: min(1120px, 92vw);
+      margin: 0.9rem auto 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(31, 27, 27, 0.08);
+      box-shadow: 0 8px 22px rgba(31, 27, 27, 0.08);
+      padding: 0.75rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .menu a {
+      color: var(--ink);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      transition: var(--transition);
+    }
+
+    .menu a:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: -4.5rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(100deg, rgba(22, 16, 16, 0.64), rgba(22, 16, 16, 0.25)),
+        url("assets/img/hero.svg") center/cover no-repeat;
+      z-index: -2;
+      transform: scale(1.02);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.45));
+      z-index: -1;
+    }
+
+    .hero-content {
+      text-align: center;
+      color: #fff;
+      width: min(860px, 92vw);
+      margin-top: 2.5rem;
+      animation: softIn 900ms ease both;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.1rem, 6vw, 4.4rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      margin-bottom: 2rem;
+      color: #f8edef;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.9rem 1.5rem;
+      font-weight: 700;
+      transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #d9b26d, #b08a4a);
+      color: #fff;
+      box-shadow: 0 10px 26px rgba(176, 138, 74, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(176, 138, 74, 0.5);
+    }
+
+    /* Beneficios */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .benefit {
+      background: var(--paper);
+      border: 1px solid rgba(31, 27, 27, 0.08);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition);
+    }
+
+    .benefit:hover {
+      transform: translateY(-4px);
+    }
+
+    .benefit span {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(120deg, var(--pink), var(--beige));
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    /* Servicios */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .service {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid rgba(31, 27, 27, 0.08);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition);
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+    }
+
+    .service img {
+      height: 190px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .service-content {
+      padding: 1rem;
+    }
+
+    .service-content h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    .service-content p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Galeria */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .gallery-grid img {
+      border-radius: 14px;
+      height: 320px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform var(--transition), filter var(--transition);
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+      filter: saturate(1.1);
+    }
+
+    /* Sobre nosotros */
+    .about {
+      border-radius: 24px;
+      padding: 2rem;
+      background: linear-gradient(130deg, #fff, #fdf2ea);
+      border: 1px solid rgba(31, 27, 27, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .about p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.07rem;
+    }
+
+    /* Ubicación */
+    .location-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+    }
+
+    .map-card,
+    .location-info {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid rgba(31, 27, 27, 0.08);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .map-card iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      border: 0;
+    }
+
+    .location-info {
+      padding: 1.2rem;
+    }
+
+    .location-info ul {
+      list-style: none;
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+      color: var(--muted);
+    }
+
+    .location-info li i {
+      width: 22px;
+      color: var(--gold);
+    }
+
+    /* Contacto */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+    }
+
+    .contact-form,
+    .contact-info {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.25rem;
+      border: 1px solid rgba(31, 27, 27, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 0.9rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(31, 27, 27, 0.2);
+      border-radius: 12px;
+      padding: 0.8rem 0.9rem;
+      font: inherit;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      background: #fff;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(176, 138, 74, 0.18);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-info ul {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 0.8rem;
+    }
+
+    .contact-info li {
+      background: linear-gradient(120deg, #fff, #fff8f0);
+      padding: 0.8rem;
+      border-radius: 12px;
+      border: 1px solid rgba(31, 27, 27, 0.08);
+      font-weight: 600;
+    }
+
+    .contact-info a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #151112;
+      color: #f4eeef;
+      margin-top: 5rem;
+      padding: 2.2rem 0;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .socials {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .socials a:hover {
+      background: #fff;
+      color: #1a1415;
+    }
+
+    @keyframes softIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 880px) {
+      .benefits-grid,
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .location-wrap,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.6rem);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: min(92vw, 420px);
+        flex-direction: column;
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid rgba(31, 27, 27, 0.1);
+        box-shadow: var(--shadow);
+        padding: 0.8rem;
+      }
+
+      .menu.open {
+        display: flex;
+      }
+
+      .services-grid,
+      .benefits-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 84vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Encabezado con navegación principal -->
+  <header class="header" aria-label="Navegación principal">
+    <a href="#inicio" class="brand">Lumina Estética</a>
+    <nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <ul class="menu" id="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#sobre">Sobre nosotros</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Sección Hero / Inicio -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Realza tu belleza con servicios de estética profesional</h1>
+      <p>Cuidado facial, pestañas, cejas, maquillaje y tratamientos de belleza para ocasiones especiales</p>
+      <a href="#contacto" class="btn btn-primary">Reservar cita</a>
+    </div>
+  </section>
+
+  <main>
+    <!-- Sección Beneficios -->
+    <section class="section" id="beneficios">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">Beneficios</h2>
+          <p>Combinamos técnica, productos de calidad y atención personalizada para que te sientas y te veas increíble.</p>
+        </div>
+        <div class="benefits-grid">
+          <article class="benefit reveal"><span>⏳</span><h3>Resultados de larga duración</h3></article>
+          <article class="benefit reveal"><span>💎</span><h3>Productos profesionales de alta calidad</h3></article>
+          <article class="benefit reveal"><span>✨</span><h3>Atención personalizada</h3></article>
+          <article class="benefit reveal"><span>🌿</span><h3>Tratamientos adaptados a tu piel</h3></article>
+          <article class="benefit reveal"><span>🧖</span><h3>Ambiente cómodo y relajante</h3></article>
+          <article class="benefit reveal"><span>🧼</span><h3>Higiene y seguridad garantizada</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">Nuestros servicios</h2>
+        </div>
+        <div class="services-grid">
+          <article class="service reveal">
+            <img src="assets/img/service-1.svg" alt="Limpieza facial profunda" />
+            <div class="service-content"><h3>Limpieza facial profunda</h3><p>Renueva tu piel con un protocolo de limpieza profesional.</p></div>
+          </article>
+          <article class="service reveal">
+            <img src="assets/img/service-2.svg" alt="Diseño y perfilado de cejas" />
+            <div class="service-content"><h3>Diseño y perfilado de cejas</h3><p>Definición de cejas según tus facciones y estilo.</p></div>
+          </article>
+          <article class="service reveal">
+            <img src="assets/img/service-3.svg" alt="Lifting y tinte de pestañas" />
+            <div class="service-content"><h3>Lifting y tinte de pestañas</h3><p>Mirada más expresiva y natural sin extensiones.</p></div>
+          </article>
+          <article class="service reveal">
+            <img src="assets/img/service-4.svg" alt="Maquillaje social y de evento" />
+            <div class="service-content"><h3>Maquillaje social y de evento</h3><p>Look elegante para bodas, fiestas y celebraciones.</p></div>
+          </article>
+          <article class="service reveal">
+            <img src="assets/img/service-5.svg" alt="Manicure y gel semipermanente" />
+            <div class="service-content"><h3>Manicure y gel semipermanente</h3><p>Manos impecables con acabados duraderos y elegantes.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Galería -->
+    <section class="section" id="galeria">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">Nuestros trabajos</h2>
+        </div>
+        <div class="gallery-grid">
+          <img class="reveal" src="assets/img/gallery-1.svg" alt="Trabajo de estética 1" />
+          <img class="reveal" src="assets/img/gallery-2.svg" alt="Trabajo de estética 2" />
+          <img class="reveal" src="assets/img/gallery-3.svg" alt="Trabajo de estética 3" />
+          <img class="reveal" src="assets/img/gallery-4.svg" alt="Trabajo de estética 4" />
+          <img class="reveal" src="assets/img/gallery-5.svg" alt="Trabajo de estética 5" />
+          <img class="reveal" src="assets/img/gallery-6.svg" alt="Trabajo de estética 6" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Sobre nosotros -->
+    <section class="section" id="sobre">
+      <div class="container">
+        <article class="about reveal">
+          <h2 class="title">Sobre nosotros</h2>
+          <p>Somos especialistas en estética profesional, enfocados en resaltar tu belleza natural con técnicas modernas, productos de alta calidad y atención cercana en cada cita.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sección Ubicación -->
+    <section class="section" id="ubicacion">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">Ubicación del local</h2>
+          <p>Visítanos en nuestro estudio. Te atendemos con cita para brindarte una experiencia personalizada.</p>
+        </div>
+        <div class="location-wrap">
+          <article class="map-card reveal">
+            <iframe
+              title="Mapa de ubicación de Lumina Estética"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Guadalajara%20Jalisco&output=embed">
+            </iframe>
+          </article>
+          <aside class="location-info reveal">
+            <h3>Datos del local</h3>
+            <ul>
+              <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Av. Principal 123, Guadalajara, Jalisco</li>
+              <li><i class="fa-regular fa-clock" aria-hidden="true"></i>Lunes a sábado: 10:00 am - 7:00 pm</li>
+              <li><i class="fa-solid fa-square-parking" aria-hidden="true"></i>Estacionamiento cercano disponible</li>
+              <li><i class="fa-solid fa-phone" aria-hidden="true"></i>Agenda por WhatsApp: +52 1 33 1864 5175</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="title">Contacto</h2>
+          <p>Cuéntanos qué servicio de estética necesitas y te responderemos lo antes posible.</p>
+        </div>
+        <div class="contact-wrap">
+          <form class="contact-form reveal" id="contactForm">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="correo">Correo</label>
+              <input id="correo" name="correo" type="email" placeholder="tuemail@correo.com" required />
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Enviar</button>
+          </form>
+
+          <aside class="contact-info reveal">
+            <h3>También puedes escribirnos por:</h3>
+            <ul>
+              <li>WhatsApp: <a href="https://wa.me/523318645175" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>+52 1 33 1864 5175</a></li>
+              <li>Instagram: <a href="https://instagram.com/luminaestetica" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>@luminaestetica</a></li>
+              <li>Facebook: <a href="https://facebook.com/luminaestetica" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i>Lumina Estética Studio</a></li>
+              <li>Email: <a href="mailto:contacto@luminaestetica.com">contacto@luminaestetica.com</a></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-wrap">
+      <div>
+        <p class="footer-brand">Lumina Estética Studio</p>
+        <p>Todos los derechos reservados © 2026</p>
+      </div>
+      <div class="socials" aria-label="Redes sociales">
+        <a href="https://instagram.com/luminaestetica" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram</a>
+        <a href="https://wa.me/523318645175" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>WhatsApp</a>
+        <a href="https://facebook.com/luminaestetica" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i>Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add("js");
+
+    // Menu movil
+    const menuToggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Cerrar menu al seleccionar una opción en móvil
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Animaciones suaves al hacer scroll con IntersectionObserver
+    const revealElements = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.2
+        }
+      );
+
+      revealElements.forEach((element) => observer.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add("show"));
+    }
+
+    // Enviar formulario a WhatsApp con mensaje prellenado
+    const contactForm = document.getElementById("contactForm");
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const nombre = document.getElementById("nombre").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+      const mensaje = document.getElementById("mensaje").value.trim();
+      const numeroWhatsApp = "523318645175";
+
+      const texto = `Hola, soy ${nombre}.\nMi correo es: ${correo}.\nQuiero información sobre servicios de estética.\nMensaje: ${mensaje}`;
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+
+      window.open(url, "_blank", "noopener,noreferrer");
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
